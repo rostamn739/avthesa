@@ -12,7 +12,10 @@ const puppe = require( 'puppeteer' );
 	//	//console.log( wordlink );
 	//	await wordlink.click( );
 	//}
-	let lvl2 frame = page.frames( )[1].childFrames( )[0];
-	let lvl3 frame = page.frames( )[1].childFrames( )[1];
-	
+	const lvl2frame = page.frames( )[3].childFrames( )[0];
+	const lvl3frame = page.frames( )[3].childFrames( )[1];
+	let el = await lvl2frame.$( 'select[name^="TT2"]' );
+	if (el != null) console.log( el );
+	el = await lvl2frame.$( 'select[name^="TT3"]' );
+	if (el != null) console.log ( el );
 })( );
