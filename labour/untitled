@@ -1,0 +1,10 @@
+window.hrefs = [];
+
+window.frames[
+0].document.querySelectorAll(
+'a[href^="javascript:ci"]').forEach(
+function(el) {
+if(el.href.includes('58269') || el.href.includes('60317')) window.hrefs.push(el.href)} );
+
+document.write( window.hrefs.join('<br>'));
+
