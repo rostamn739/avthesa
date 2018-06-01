@@ -4,7 +4,7 @@ import re;
 
 def wordfiles_list( ):
 	import glob
-	return glob.glob( "temp/t12/*.html" )
+	return glob.glob( "temp/t22/*.html" )
 	#return glob.glob( "temp/58269-vahi6101t5902m.html" )
 	
 class ParseResults:
