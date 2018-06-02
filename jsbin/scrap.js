@@ -20,7 +20,7 @@ let openword = async (lang, word) => {
 	const page = await browser.newPage( );
 	//await page.goto( 
 	//'http://titus.uni-frankfurt.de/texte/etcs/iran/airan/avesta/avest.htm' );
-	let hreflines = fs.readFileSync( '../labour/hrefslist_uniq3.txt' 
+	let hreflines = fs.readFileSync( '../labour/hrefslist_uniq4.txt' 
 		).toString( ).match(/^.+$/gm);
 	for (let hline of hreflines) {
 		lang = hline.split( '(' )[ 1 ].split( ',' )[ 0 ];
