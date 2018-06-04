@@ -15,15 +15,13 @@ PRIMARY KEY (QUERY_FOR, IN_LANGUAGE)
 	cu.execute('''
 CREATE TABLE IF NOT EXISTS LOCATIONS_V2 (
 QUERY_FOR text not null,
-LOCATION text not null,
-FOREIGN KEY(query_for) REFERENCES words_v2(query_for)
+LOCATION text not null
 )	
 	''');
 	cu.execute('''
 CREATE TABLE IF NOT EXISTS ANALYSES_V2 (
 QUERY_FOR text not null,
-ANALYSIS text not null,
-FOREIGN KEY (query_for) REFERENCES words_v2(query_for)
+ANALYSIS text not null
 
 )
 	''');
@@ -76,8 +74,8 @@ word_form, lemma
 			qf2 = v;
 			qf2 = re.sub(u"tk", u"t̰k", qf2)
 			qf2 = re.sub(u"^tb", u"t̰b", qf2)
-			if ( re.match( u'st$', qf2 ) ) or \
-				( re.match( u'št$', qf2 ) ):
+			if ( re.search( u'st$', qf2 ) ) or \
+				( re.search( u'št$', qf2 ) ):
 					pass
 			else:
 				qf2 = re.sub(u't$', u't̰', qf2)
@@ -85,10 +83,12 @@ word_form, lemma
 		qf_2 = u'.'.join( qf_s2 )
 		if not qf == qf_2: print( "%s is %s" % (qf, qf_2) )
 		#else: print( '%s is normal' % (qf) );
-		
-		if (re.match( u'old', inl)):
+		#import pdb; pdb.set_trace( )
+		if (re.search( u'old', inl)):
 			inl = 1;
-		else: inl = 2;
+		elif (re.search( u'young', inl)): 
+			inl = 2;
+		else: inl = 3
 		
 		try:
 			cu.execute('''
